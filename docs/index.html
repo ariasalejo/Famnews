@@ -1,468 +1,366 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noticias Virales | Famenews</title>
-    <meta name="description" content="Todas las noticias virales actualizadas en un solo lugar">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* Estilos generales */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: #f5f5f5;
-            color: #333;
-            line-height: 1.6;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px 0;
-        }
-        
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
-            color: white;
-            padding: 1rem 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 2.2rem;
-            font-weight: 800;
-            background: linear-gradient(90deg, #ff0000 0%, #ff6b6b 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
-        }
-        
-        .search-container {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .search-input {
-            padding: 10px 15px;
-            border: none;
-            border-radius: 30px;
-            width: 250px;
-            font-size: 1rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .search-button {
-            background-color: #ff0000;
-            color: white;
-            border: none;
-            border-radius: 30px;
-            padding: 0 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .search-button:hover {
-            background-color: #cc0000;
-        }
-        
-        /* Main content */
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-        
-        .news-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        
-        .news-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-        
-        .news-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .news-card:hover .news-image {
-            transform: scale(1.05);
-        }
-        
-        .news-content {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .news-category {
-            display: inline-block;
-            background-color: #ff0000;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-        
-        .news-title {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            line-height: 1.4;
-            flex-grow: 1;
-        }
-        
-        .news-description {
-            color: #666;
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        
-        .news-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.85rem;
-            color: #888;
-            margin-top: auto;
-        }
-        
-        .news-source {
-            font-weight: bold;
-            color: #555;
-        }
-        
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
-            color: white;
-            padding: 50px 0 20px;
-            margin-top: 50px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            padding-bottom: 30px;
-        }
-        
-        .footer-section h3 {
-            color: #ff0000;
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-links a {
-            color: #ccc;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: white;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: color 0.3s;
-        }
-        
-        .social-links a:hover {
-            color: #ff0000;
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #333;
-            color: #999;
-            font-size: 0.9rem;
-        }
-        
-        /* Loader */
-        .loader {
-            display: none;
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid #ff0000;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 50px auto;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        /* Error message */
-        .error-message {
-            background-color: #ffebee;
-            color: #d32f2f;
-            padding: 20px;
-            border-radius: 5px;
-            text-align: center;
-            margin: 30px 0;
-            display: none;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .search-container {
-                width: 100%;
-            }
-            
-            .search-input {
-                width: 100%;
-            }
-            
-            .news-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Famnews | Portal de Noticias</title>
+  <style>
+    /* Reset y estilos básicos */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ENCABEZADO PROFESIONAL */
+    header {
+      background: linear-gradient(90deg, #1a1a1a, #292929);
+      color: #fff;
+      padding: 20px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .logo span {
+      font-size: 1.6em;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 10px;
+      justify-content: flex-start;
+      width: 100%;
+    }
+
+    .nav a {
+      color: #ddd;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background .2s ease;
+    }
+
+    .nav a.active, .nav a:hover {
+      background: #ff4747;
+      color: #fff;
+    }
+
+    /* Contenido principal */
+    main { padding: 30px 20px; max-width: 1200px; margin: auto; }
+    section { margin-bottom: 60px; }
+    h2.section-title {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      border-left: 5px solid #ff4747;
+      padding-left: 10px;
+      color: #222;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .card-content h3 {
+      font-size: 1.1em;
+      margin-bottom: 8px;
+      color: #222;
+    }
+
+    .card-content p {
+      flex: 1;
+      font-size: .95em;
+      color: #555;
+      margin-bottom: 12px;
+    }
+
+    .card-content time {
+      font-size: .85em;
+      color: #888;
+    }
+
+    .card-content a {
+      align-self: flex-start;
+      margin-top: 10px;
+      color: #ff4747;
+      font-weight: bold;
+    }
+
+    .card-large { grid-column: span 2; }
+    .card-medium { grid-column: span 1; }
+    .card-small { grid-column: span 1; }
+
+    .loader {
+      display: none;
+      border: 4px solid #eee;
+      border-top: 4px solid #ff4747;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      animation: spin 1s linear infinite;
+      margin: 40px auto;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg);} }
+
+    .error {
+      display: none;
+      padding: 15px;
+      background: #fdecea;
+      color: #b00020;
+      margin: 20px auto;
+      max-width: 600px;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    /* FOOTER PROFESIONAL */
+    footer {
+      background: #1a1a1a;
+      color: #ccc;
+      text-align: center;
+      padding: 25px 20px;
+      margin-top: 60px;
+    }
+
+    footer p {
+      font-size: 0.9em;
+      margin-bottom: 10px;
+    }
+
+    footer a {
+      color: #ff4747;
+      font-weight: 500;
+    }
+
+    /* Responsividad para diferentes dispositivos */
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .nav {
+        justify-content: center;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .news-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+
+      .card img {
+        height: 140px;
+      }
+
+      .section-title {
+        font-size: 1.5em;
+      }
+
+      footer p {
+        font-size: 0.8em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo span {
+        font-size: 1.4em;
+      }
+
+      .nav a {
+        padding: 10px 15px;
+      }
+
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card img {
+        height: 120px;
+      }
+
+      .card-content h3 {
+        font-size: 1em;
+      }
+
+      .section-title {
+        font-size: 1.3em;
+      }
+
+      footer p {
+        font-size: 0.7em;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container header-content">
-            <div class="logo">Famenews</div>
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Buscar noticias...">
-                <button class="search-button"><i class="fas fa-search"></i></button>
-            </div>
-        </div>
-    </header>
-    
-    <main class="container">
-        <div class="loader" id="loader"></div>
-        <div class="error-message" id="error-message"></div>
-        <div class="news-grid" id="news-container"></div>
-    </main>
-    
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Sobre nosotros</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Quiénes somos</a></li>
-                        <li><a href="#">Nuestro equipo</a></li>
-                        <li><a href="#">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Categorías</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Tecnología</a></li>
-                        <li><a href="#">Finanzas</a></li>
-                        <li><a href="#">Salud</a></li>
-                        <li><a href="#">Entretenimiento</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Legal</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Términos de uso</a></li>
-                        <li><a href="#">Privacidad</a></li>
-                        <li><a href="#">Cookies</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Síguenos</h3>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>© 2024 Famenews. Todos los derechos reservados.</p>
-                <p>Noticias proporcionadas por NewsAPI</p>
-            </div>
-        </div>
-    </footer>
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        <img src="https://cdn-icons-png.flaticon.com/512/21/21601.png" alt="Famnews logo">
+        <span>Famnews</span>
+      </div>
+      <nav class="nav">
+        <a href="#breaking" data-key="" class="active">Breaking News</a>
+        <a href="#opinion" data-key="opinión">Análisis & Opinión</a>
+        <a href="#entretenimiento" data-key="entretenimiento">Culture & Entretenimiento</a>
+        <a href="#salud" data-key="salud bienestar">Salud y Bienestar</a>
+        <a href="#ciencia" data-key="ciencia tecnología">Ciencia</a>
+      </nav>
+    </div>
+  </header>
 
-    <script>
-        // Configuración de la API
-        const API_KEY = 'b2f9fc39-ddcc-493a-b512-171dc224aa7d'; // Tu API Key de NewsAPI.ai
-        const BASE_URL = 'https://newsapi.ai/api/v1/article/getArticles';
-        
-        // Elementos del DOM
-        const newsContainer = document.getElementById('news-container');
-        const loader = document.getElementById('loader');
-        const errorMessage = document.getElementById('error-message');
-        const searchInput = document.querySelector('.search-input');
-        const searchButton = document.querySelector('.search-button');
-        
-        // Cargar noticias al iniciar
-        document.addEventListener('DOMContentLoaded', () => {
-            loadNews();
+  <main>
+    <div class="loader" id="loader"></div>
+    <div class="error" id="error">No se pudieron cargar las noticias.</div>
+
+    <section id="breaking">
+      <h2 class="section-title">Breaking News</h2>
+      <div class="news-grid" id="grid-breaking"></div>
+    </section>
+
+    <section id="opinion">
+      <h2 class="section-title">Análisis & Opinión</h2>
+      <div class="news-grid" id="grid-opinion"></div>
+    </section>
+
+    <section id="entretenimiento">
+      <h2 class="section-title">Culture & Entretenimiento</h2>
+      <div class="news-grid" id="grid-entretenimiento"></div>
+    </section>
+
+    <section id="salud">
+      <h2 class="section-title">Salud y Bienestar</h2>
+      <div class="news-grid" id="grid-salud"></div>
+    </section>
+
+    <section id="ciencia">
+      <h2 class="section-title">Ciencia</h2>
+      <div class="news-grid" id="grid-ciencia"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Famnews. Todos los derechos reservados.</p>
+    <p>Diseñado con pasión por <a href="#">Famnews Team</a></p>
+  </footer>
+
+  <script>
+    const API_KEY = 'b2f9fc39-ddcc-493a-b512-171dc224aa7d';
+    const BASE = 'https://newsapi.ai/api/v1/article/getArticles';
+    const sections = document.querySelectorAll('nav a');
+    const loader = document.getElementById('loader');
+    const errorDiv = document.getElementById('error');
+
+    function formatDate(s) {
+      const d = new Date(s);
+      return d.toLocaleDateString('es-ES',{ day:'numeric',month:'long',year:'numeric' });
+    }
+
+    async function loadSection(key, gridId) {
+      const grid = document.getElementById(gridId);
+      grid.innerHTML = '';
+      try {
+        loader.style.display = 'block';
+        errorDiv.style.display = 'none';
+        const url = new URL(BASE);
+        url.searchParams.set('apiKey', API_KEY);
+        url.searchParams.set('lang', 'spa');
+        url.searchParams.set('resultType', 'articles');
+        url.searchParams.set('count', '8');
+        if (key) {
+          url.searchParams.set('keyword', key);
+          url.searchParams.set('keywordOper', 'or');
+        }
+        const res = await fetch(url);
+        const data = await res.json();
+        if (!data.articles || !data.articles.results) throw new Error();
+
+        const articles = data.articles.results;
+        articles.forEach((a, i) => {
+          const div = document.createElement('div');
+          div.className = 'card ' + (i === 0 ? 'card-large' : i < 3 ? 'card-medium' : 'card-small');
+          div.innerHTML = `
+            <img src="${a.image || 'https://via.placeholder.com/400x200'}" alt="img">
+            <div class="card-content">
+              <h3>${a.title}</h3>
+              <p>${a.snippet}</p>
+              <time>${formatDate(a.date)}</time>
+              <a href="${a.url}" target="_blank">Leer más</a>
+            </div>`;
+          grid.appendChild(div);
         });
-        
-        // Función para cargar noticias
-        async function loadNews(query = '') {
-            try {
-                // Mostrar loader y ocultar mensaje de error
-                loader.style.display = 'block';
-                errorMessage.style.display = 'none';
-                newsContainer.innerHTML = '';
-                
-                // Construir URL de la API
-                const url = new URL(BASE_URL);
-                url.searchParams.append('apiKey', API_KEY);
-                url.searchParams.append('lang', 'spa');
-                url.searchParams.append('count', 50); // Más noticias para filtrar
-                
-                if (query) {
-                    url.searchParams.append('query', query);
-                }
-                
-                // Hacer la petición
-                const response = await fetch(url);
-                
-                if (!response.ok) {
-                    throw new Error(`Error HTTP: ${response.status}`);
-                }
-                
-                const data = await response.json();
-                
-                // Filtrar noticias que tienen imagen
-                const articlesWithImages = data.articles?.results?.filter(article => article.image) || [];
-                
-                if (articlesWithImages.length === 0) {
-                    throw new Error('No se encontraron noticias con imágenes');
-                }
-                
-                // Mostrar noticias
-                renderNews(articlesWithImages);
-                
-            } catch (error) {
-                console.error('Error al cargar noticias:', error);
-                showError('Error al cargar noticias. Por favor intenta nuevamente.');
-            } finally {
-                loader.style.display = 'none';
-            }
-        }
-        
-        // Función para renderizar noticias
-        function renderNews(articles) {
-            newsContainer.innerHTML = '';
-            
-            articles.forEach(article => {
-                const newsCard = document.createElement('div');
-                newsCard.className = 'news-card';
-                
-                newsCard.innerHTML = `
-                    <img src="${article.image}" alt="${article.title}" class="news-image" onerror="this.src='https://via.placeholder.com/600x400?text=Imagen+no+disponible'">
-                    <div class="news-content">
-                        <span class="news-category">${article.source?.title || 'General'}</span>
-                        <h3 class="news-title">${article.title}</h3>
-                        <p class="news-description">${article.body || 'Descripción no disponible'}</p>
-                        <div class="news-meta">
-                            <span class="news-date">${formatDate(article.pubDate)}</span>
-                            <span class="news-source">${article.source?.title || 'Fuente'}</span>
-                        </div>
-                    </div>
-                    <a href="${article.url}" target="_blank" rel="noopener noreferrer" class="news-link"></a>
-                `;
-                
-                newsContainer.appendChild(newsCard);
-            });
-        }
-        
-        // Función para formatear fecha
-        function formatDate(dateString) {
-            if (!dateString) return '';
-            
-            const date = new Date(dateString);
-            return date.toLocaleDateString('es-ES', {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric'
-            });
-        }
-        
-        // Función para mostrar errores
-        function showError(message) {
-            errorMessage.textContent = message;
-            errorMessage.style.display = 'block';
-        }
-        
-        // Evento de búsqueda
-        searchButton.addEventListener('click', () => {
-            const query = searchInput.value.trim();
-            if (query) {
-                loadNews(query);
-            }
-        });
-        
-        searchInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                const query = searchInput.value.trim();
-                if (query) {
-                    loadNews(query);
-                }
-            }
-        });
-    </script>
+      } catch (err) {
+        errorDiv.style.display = 'block';
+      } finally {
+        loader.style.display = 'none';
+      }
+    }
+
+    // Cargar todas las secciones al iniciar
+    loadSection('', 'grid-breaking');
+    loadSection('opinión', 'grid-opinion');
+    loadSection('entretenimiento', 'grid-entretenimiento');
+    loadSection('salud bienestar', 'grid-salud');
+    loadSection('ciencia tecnología', 'grid-ciencia');
+
+    // Cambiar pestañas activas
+    sections.forEach(link => {
+      link.addEventListener('click', (e) => {
+        sections.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
