@@ -1,259 +1,67 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html><html lang="es">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-adsense-account" content="ca-pub-4580331939704676">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Famnews | Portal de Noticias</title>
-  <!-- Google AdSense Script en el head -->
+  <!-- Google AdSense Script -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4580331939704676" crossorigin="anonymous"></script>
   <style>
-    /* ===== RESET MEJORADO ===== */
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      min-height: 100vh;
-      overflow-x: hidden;
-      display: flex;
-      flex-direction: column;
-    }
+    /* ===== RESET ===== */
+    html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; overflow-x: hidden; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; display: flex; flex-direction: column; }/* ===== HEADER ===== */
+header { background: linear-gradient(90deg, #1a1a1a, #292929); color: #fff; padding: 20px 0; position: sticky; top: 0; width: 100%; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
+.header-inner { max-width: 1200px; margin: auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; padding: 0 20px; }
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo img { width: 40px; height: 40px; }
+.logo span { font-size: 1.6em; font-weight: bold; letter-spacing: 1px; }
+.nav { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 10px; width: 100%; justify-content: flex-end; }
+.nav a { color: #ddd; padding: 8px 12px; border-radius: 4px; transition: background .2s ease; text-decoration: none; font-size: 0.95em; }
+.nav a.active, .nav a:hover { background: #ff4747; color: #fff; }
 
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+/* ===== AD CONTAINER ===== */
+.ad-container { max-width: 1200px; margin: 20px auto; text-align: center; }
 
-    /* ===== ESTILOS ORIGINALES CON AJUSTES ===== */
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f5f5f5;
-      color: #333;
-      line-height: 1.6;
-    }
+/* ===== LOADER & ERROR ===== */
+.loader { display: none; border: 5px solid #f3f3f3; border-top: 5px solid #ff4747; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 30px auto; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.error { display: none; color: red; text-align: center; margin: 20px 0; }
 
-    /* Header - Sin cambios estructurales */
-    header {
-      background: linear-gradient(90deg, #1a1a1a, #292929);
-      color: #fff;
-      padding: 20px 0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+/* ===== MAIN ===== */
+main { flex: 1; max-width: 1200px; margin: 30px auto; width: 100%; padding: 0 20px; }
+section { margin-bottom: 40px; }
+.section-title { font-size: 1.8em; margin-bottom: 20px; text-transform: uppercase; border-left: 5px solid #ff4747; padding-left: 10px; color: #222; }
+.news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
+.card { background: #fff; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 2px 6px rgba(0,0,0,0.1); transition: transform .2s; }
+.card:hover { transform: translateY(-5px); }
+.card img { width: 100%; object-fit: cover; }
+.card-content { padding: 15px; display: flex; flex-direction: column; height: 100%; }
+.card-content h3 { font-size: 1.1em; margin-bottom: 8px; color: #222; }
+.card-content p { flex: 1; font-size: .95em; color: #555; margin-bottom: 12px; }
+.card-content time { font-size: .85em; color: #888; }
+.card-content a { align-self: flex-start; margin-top: 10px; color: #ff4747; font-weight: bold; text-decoration: none; }
 
-    .header-inner {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 20px;
-      flex-wrap: wrap;
-    }
+/* ===== CARD SIZES ===== */
+.card-large { grid-column: span 2; }
+.card-large img { height: 320px; }
+.card-medium img { height: 240px; }
+.card-small img { height: 160px; }
 
-    /* Logo y navegación - Estilos originales */
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+/* ===== SCROLL TO TOP ===== */
+.scroll-top { position: fixed; bottom: 20px; right: 20px; background: #ff4747; color: #fff; padding: 10px 12px; border-radius: 50%; font-size: 1.2em; cursor: pointer; display: none; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
 
-    .logo img {
-      width: 40px;
-      height: 40px;
-    }
+/* ===== FOOTER ===== */
+footer { background: #1a1a1a; color: #ccc; text-align: center; padding: 25px 20px; font-size: 0.9em; margin-top: auto; }
+footer a { color: #ff4747; text-decoration: none; }
 
-    .logo span {
-      font-size: 1.6em;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) { .header-inner { flex-direction: column; text-align: center; } .nav { justify-content: center; } .news-grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); } }
+@media (max-width: 480px) { .logo span { font-size: 1.4em; } .nav a { padding: 10px 15px; } .news-grid { grid-template-columns: 1fr; } }
 
-    .nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-top: 10px;
-      justify-content: flex-start;
-      width: 100%;
-    }
-
-    .nav a {
-      color: #ddd;
-      padding: 8px 12px;
-      border-radius: 4px;
-      transition: background .2s ease;
-    }
-
-    .nav a.active, .nav a:hover {
-      background: #ff4747;
-      color: #fff;
-    }
-
-    /* Main - Ajustes clave para espacios */
-    main {
-      flex: 1;
-      padding: 15px 20px !important;
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    section {
-      margin-bottom: 40px;
-    }
-
-    h2.section-title {
-      font-size: 1.8em;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      border-left: 5px solid #ff4747;
-      padding-left: 10px;
-      color: #222;
-    }
-
-    /* Grid - Corrección de espacios */
-    .news-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 15px;
-      margin: 0 -5px;
-    }
-
-    /* Cards - Estilos originales */
-    .card {
-      background: #fff;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .card img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-    }
-
-    .card-content {
-      padding: 15px;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-
-    .card-content h3 {
-      font-size: 1.1em;
-      margin-bottom: 8px;
-      color: #222;
-    }
-
-    .card-content p {
-      flex: 1;
-      font-size: .95em;
-      color: #555;
-      margin-bottom: 12px;
-    }
-
-    .card-content time {
-      font-size: .85em;
-      color: #888;
-    }
-
-    .card-content a {
-      align-self: flex-start;
-      margin-top: 10px;
-      color: #ff4747;
-      font-weight: bold;
-    }
-
-    /* Footer - Ajuste final */
-    footer {
-      background: #1a1a1a;
-      color: #ccc;
-      text-align: center;
-      padding: 25px 20px;
-      margin-top: auto;
-    }
-
-    footer p {
-      font-size: 0.9em;
-      margin-bottom: 10px;
-    }
-
-    footer a {
-      color: #ff4747;
-      font-weight: 500;
-    }
-
-    /* ===== RESPONSIVIDAD ORIGINAL ===== */
-    @media (max-width: 768px) {
-      .header-inner {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .nav {
-        justify-content: center;
-        width: 100%;
-        margin-top: 10px;
-      }
-
-      .news-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      }
-
-      .card img {
-        height: 140px;
-      }
-
-      .section-title {
-        font-size: 1.5em;
-      }
-
-      footer p {
-        font-size: 0.8em;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .logo span {
-        font-size: 1.4em;
-      }
-
-      .nav a {
-        padding: 10px 15px;
-      }
-
-      .news-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .card img {
-        height: 120px;
-      }
-
-      .card-content h3 {
-        font-size: 1em;
-      }
-
-      .section-title {
-        font-size: 1.3em;
-      }
-
-      footer p {
-        font-size: 0.7em;
-      }
-    }
-
-    /* Se eliminó la regla que ocultaba los anuncios para activar el bloque */
   </style>
 </head>
 <body>
-  <!-- Header original sin cambios -->
   <header>
     <div class="header-inner">
       <div class="logo">
@@ -261,77 +69,67 @@
         <span>Famnews</span>
       </div>
       <nav class="nav">
-        <a href="#breaking" data-key="" class="active">Breaking News</a>
-        <a href="#opinion" data-key="opinión">Análisis & Opinión</a>
-        <a href="#entretenimiento" data-key="entretenimiento">Culture & Entretenimiento</a>
-        <a href="#salud" data-key="salud bienestar">Salud y Bienestar</a>
-        <a href="#ciencia" data-key="ciencia tecnología">Ciencia</a>
+        <a href="#breaking" class="active">Breaking News</a>
+        <a href="#opinion">Análisis & Opinión</a>
+        <a href="#entretenimiento">Cultura & Entretenimiento</a>
+        <a href="#salud">Salud y Bienestar</a>
+        <a href="#ciencia">Ciencia</a>
       </nav>
     </div>
-  </header>
-
-  <!-- Bloque de anuncios activado -->
-  <!-- Reemplaza "1234567890" por tu ad slot real -->
-  <div class="ad-container">
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-4580331939704676"
-         data-ad-slot="1234567890"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  </div>
-
-  <!-- Main con todo tu contenido -->
-  <main>
+  </header>  <div class="ad-container">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4580331939704676" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>  <main>
     <div class="loader" id="loader"></div>
-    <div class="error" id="error">No se pudieron cargar las noticias.</div>
+    <div class="error" id="error">No se pudieron cargar las noticias.</div><!-- SECTION: Breaking News -->
+<section id="breaking">
+  <h2 class="section-title">Breaking News</h2>
+  <div class="news-grid" id="grid-breaking"></div>
+</section>
 
-    <!-- Todas tus secciones preservadas -->
-    <section id="breaking">
-      <h2 class="section-title">Breaking News</h2>
-      <div class="news-grid" id="grid-breaking"></div>
-    </section>
+<div class="ad-container">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4580331939704676" data-ad-slot="0987654321" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
 
-    <section id="opinion">
-      <h2 class="section-title">Análisis & Opinión</h2>
-      <div class="news-grid" id="grid-opinion"></div>
-    </section>
+<section id="opinion">
+  <h2 class="section-title">Análisis & Opinión</h2>
+  <div class="news-grid" id="grid-opinion"></div>
+</section>
 
-    <section id="entretenimiento">
-      <h2 class="section-title">Culture & Entretenimiento</h2>
-      <div class="news-grid" id="grid-entretenimiento"></div>
-    </section>
+<section id="entretenimiento">
+  <h2 class="section-title">Cultura & Entretenimiento</h2>
+  <div class="news-grid" id="grid-entretenimiento"></div>
+</section>
 
-    <section id="salud">
-      <h2 class="section-title">Salud y Bienestar</h2>
-      <div class="news-grid" id="grid-salud"></div>
-    </section>
+<div class="ad-container">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4580331939704676" data-ad-slot="1122334455" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
 
-    <section id="ciencia">
-      <h2 class="section-title">Ciencia</h2>
-      <div class="news-grid" id="grid-ciencia"></div>
-    </section>
-  </main>
+<section id="salud">
+  <h2 class="section-title">Salud y Bienestar</h2>
+  <div class="news-grid" id="grid-salud"></div>
+</section>
 
-  <!-- Footer original -->
-  <footer>
+<section id="ciencia">
+  <h2 class="section-title">Ciencia</h2>
+  <div class="news-grid" id="grid-ciencia"></div>
+</section>
+
+<!-- Scroll to Top -->
+<div class="scroll-top" id="scrollTop">&#8679;</div>
+
+  </main>  <footer>
     <p>&copy; 2025 Famnews. Todos los derechos reservados.</p>
     <p>Diseñado con pasión por <a href="#">Famnews Team</a></p>
-  </footer>
-
-  <!-- Script de terceros (sin modificaciones) -->
-  <script type='text/javascript' src='//deliriumswarthybeginner.com/72/1d/1b/721d1bd88e88672ac2e2f6e01ec41599.js'></script>
-  
-  <!-- Tu JavaScript completo sin modificaciones -->
-  <script>
+  </footer>  <script src="//deliriumswarthybeginner.com/72/1d/1b/721d1bd88e88672ac2e2f6e01ec41599.js" async></script>  <script>
     const API_KEY = 'b2f9fc39-ddcc-493a-b512-171dc224aa7d';
     const BASE = 'https://newsapi.ai/api/v1/article/getArticles';
     const sections = document.querySelectorAll('nav a');
     const loader = document.getElementById('loader');
     const errorDiv = document.getElementById('error');
+    const scrollTopBtn = document.getElementById('scrollTop');
 
     function formatDate(s) {
       const d = new Date(s);
@@ -349,19 +147,19 @@
         url.searchParams.set('lang', 'spa');
         url.searchParams.set('resultType', 'articles');
         url.searchParams.set('count', '8');
-        if (key) {
-          url.searchParams.set('keyword', key);
-          url.searchParams.set('keywordOper', 'or');
-        }
+        if (key) { url.searchParams.set('keyword', key); url.searchParams.set('keywordOper', 'or'); }
         const res = await fetch(url);
         const data = await res.json();
         if (!data.articles || !data.articles.results) throw new Error();
 
-        const articles = data.articles.results;
-        articles.forEach((a, i) => {
-          const div = document.createElement('div');
-          div.className = 'card ' + (i === 0 ? 'card-large' : i < 3 ? 'card-medium' : 'card-small');
-          div.innerHTML = `
+        data.articles.results.forEach((a, i) => {
+          const card = document.createElement('div');
+          let sizeClass = '';
+          if (gridId === 'grid-breaking') {
+            sizeClass = i === 0 ? 'card-large' : (i < 3 ? 'card-medium' : 'card-small');
+          }
+          card.className = `card ${sizeClass}`;
+          card.innerHTML = `
             <img src="${a.image || 'https://via.placeholder.com/400x200'}" alt="img">
             <div class="card-content">
               <h3>${a.title}</h3>
@@ -369,7 +167,7 @@
               <time>${formatDate(a.date)}</time>
               <a href="${a.url}" target="_blank">Leer más</a>
             </div>`;
-          grid.appendChild(div);
+          grid.appendChild(card);
         });
       } catch (err) {
         errorDiv.style.display = 'block';
@@ -378,20 +176,25 @@
       }
     }
 
-    // Carga inicial
+    // Scroll to top functionality
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Initial load
     loadSection('', 'grid-breaking');
     loadSection('opinión', 'grid-opinion');
     loadSection('entretenimiento', 'grid-entretenimiento');
     loadSection('salud bienestar', 'grid-salud');
     loadSection('ciencia tecnología', 'grid-ciencia');
 
-    // Navegación
-    sections.forEach(link => {
-      link.addEventListener('click', (e) => {
-        sections.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-      });
-    });
-  </script>
-</body>
+    // Navigation
+    sections.forEach(link => link.addEventListener('click', e => {
+      sections.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    }));
+  </script></body>
 </html>
