@@ -4,6 +4,8 @@
   <meta name="google-adsense-account" content="ca-pub-4580331939704676">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Famnews | Portal de Noticias</title>
+  <!-- Google AdSense Script en el head -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4580331939704676" crossorigin="anonymous"></script>
   <style>
     /* ===== RESET MEJORADO ===== */
     html, body {
@@ -247,10 +249,7 @@
       }
     }
 
-    /* ===== CORRECCIÓN ESPACIOS ADS ===== */
-    body > ins.adsbygoogle[data-ad-slot] {
-      display: none !important;
-    }
+    /* Se eliminó la regla que ocultaba los anuncios para activar el bloque */
   </style>
 </head>
 <body>
@@ -270,6 +269,20 @@
       </nav>
     </div>
   </header>
+
+  <!-- Bloque de anuncios activado -->
+  <!-- Reemplaza "1234567890" por tu ad slot real -->
+  <div class="ad-container">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-4580331939704676"
+         data-ad-slot="1234567890"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
 
   <!-- Main con todo tu contenido -->
   <main>
@@ -309,8 +322,7 @@
     <p>Diseñado con pasión por <a href="#">Famnews Team</a></p>
   </footer>
 
-  <!-- ===== TODOS LOS SCRIPTS AL FINAL ===== -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4580331939704676" crossorigin="anonymous"></script>
+  <!-- Script de terceros (sin modificaciones) -->
   <script type='text/javascript' src='//deliriumswarthybeginner.com/72/1d/1b/721d1bd88e88672ac2e2f6e01ec41599.js'></script>
   
   <!-- Tu JavaScript completo sin modificaciones -->
@@ -323,7 +335,7 @@
 
     function formatDate(s) {
       const d = new Date(s);
-      return d.toLocaleDateString('es-ES',{ day:'numeric',month:'long',year:'numeric' });
+      return d.toLocaleDateString('es-ES',{ day:'numeric', month:'long', year:'numeric' });
     }
 
     async function loadSection(key, gridId) {
@@ -380,9 +392,6 @@
         link.classList.add('active');
       });
     });
-
-    // Adsense
-    (adsbygoogle = window.adsbygoogle || []).push({});
   </script>
 </body>
 </html>
