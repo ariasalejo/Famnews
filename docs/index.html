@@ -4,15 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta name="google-adsense-account" content="ca-pub-4580331939704676">
-    
+
     <!-- Metaetiquetas SEO -->
     <title>Famnews - Noticias Actualizadas 24/7 | Política, Tecnología, Deportes</title>
-    <meta name="description" content="Portal de noticias actualizado minuto a minuto. Cobertura en política, tecnología, economía, deportes y entretenimiento. Información verificada y análisis expertos.">
-    <meta name="keywords" content="noticias, actualidad, política, tecnología, deportes, economía, México, mundo">
+    <meta name="description" content="Portal de noticias actualizado minuto a minuto. Cobertura en política, tecnología, economía, deportes y entretenimiento. Información verificada y análisis experto.">
+    <meta name="keywords" content="noticias, actualidad, política, tecnología, deportes, economía, salud, entretenimiento, México, mundo, noticias de última hora">
     <meta name="author" content="Famnews Team">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://tudominio.com">
-    
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsMediaOrganization",
+      "name": "Famnews",
+      "url": "https://tudominio.com",
+      "logo": "https://tudominio.com/logo.png",
+      "sameAs": [
+        "https://facebook.com/famnews",
+        "https://twitter.com/famnews",
+        "https://instagram.com/famnews"
+      ]
+    }
+    </script>
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tudominio.com">
@@ -28,377 +44,273 @@
     <meta name="twitter:description" content="Sigue la actualidad con cobertura completa y multimedia">
     <meta name="twitter:image" content="https://tudominio.com/twitter-card.jpg">
 
-    <!-- AdSense + Adsterra -->
+    <!-- AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4580331939704676" crossorigin="anonymous"></script>
-    <script type='text/javascript' src='//pl23734234.highcpmrevenuegate.com/aa/5e/ed/aa5eedc0a4aac8b0a3c0dab3e6d7f4f6.js'></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
 
     <style>
-        /* ===== ESTILOS GENERALES ===== */
-        .video-section {
-            margin: 25px 0;
-            padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        }
-        
-        .live-badge {
-            background: #ff0000;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 3px;
-            font-size: 0.8em;
-            margin-left: 10px;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
-        }
-        
-        /* ===== RESET ===== */
-        html, body { 
-            margin: 0; 
-            padding: 0; 
-            width: 100%; 
-            min-height: 100vh; 
-            overflow-x: hidden; 
-        }
-        
-        *, *::before, *::after { 
-            box-sizing: border-box; 
-        }
-        
-        body { 
-            font-family: 'Segoe UI', sans-serif; 
-            background: #f5f5f5; 
-            color: #333; 
-            line-height: 1.6; 
-            display: flex; 
-            flex-direction: column; 
-        }
-
-        /* ===== HEADER ===== */
-        header { 
-            background: linear-gradient(90deg, #1a1a1a, #292929); 
-            color: #fff; 
-            padding: 20px 0; 
-            position: sticky; 
-            top: 0; 
-            width: 100%; 
-            z-index: 1000; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.3); 
-        }
-        
-        .header-inner { 
-            max-width: 1200px; 
-            margin: auto; 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-            flex-wrap: wrap; 
-            padding: 0 20px; 
-        }
-        
-        .logo { 
-            display: flex; 
-            align-items: center; 
-            gap: 10px; 
-        }
-        
-        .logo img { 
-            width: 40px; 
-            height: 40px; 
-        }
-        
-        .logo span { 
-            font-size: 1.6em; 
-            font-weight: bold; 
-            letter-spacing: 1px; 
-        }
-        
-        .nav { 
-            display: flex; 
-            flex-wrap: wrap; 
-            gap: 15px; 
-            margin-top: 10px; 
-            width: 100%; 
-            justify-content: flex-end; 
-        }
-        
-        .nav a { 
-            color: #ddd; 
-            padding: 8px 12px; 
-            border-radius: 4px; 
-            transition: background .2s ease; 
-            text-decoration: none; 
-            font-size: 0.95em; 
-        }
-        
-        .nav a.active, .nav a:hover { 
-            background: #ff4747; 
-            color: #fff; 
-        }
-
-        /* ===== CONTENIDO PRINCIPAL ===== */
-        main { 
-            flex: 1; 
-            max-width: 1200px; 
-            margin: 30px auto; 
-            width: 100%; 
-            padding: 0 20px; 
-        }
-        
-        section { 
-            margin-bottom: 40px; 
-        }
-        
-        .section-title { 
-            font-size: 1.8em; 
-            margin-bottom: 20px; 
-            text-transform: uppercase; 
-            border-left: 5px solid #ff4747; 
-            padding-left: 10px; 
-            color: #222; 
-        }
-        
-        .news-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-            gap: 15px; 
-        }
-        
-        .card { 
-            background: #fff; 
-            border-radius: 8px; 
-            overflow: hidden; 
-            display: flex; 
-            flex-direction: column; 
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
-            transition: transform .2s; 
-        }
-        
-        .card:hover { 
-            transform: translateY(-5px); 
-        }
-        
-        .card img { 
-            width: 100%; 
-            object-fit: cover; 
-        }
-        
-        .card-content { 
-            padding: 15px; 
-            display: flex; 
-            flex-direction: column; 
-            height: 100%; 
-        }
-        
-        .card-content h3 { 
-            font-size: 1.1em; 
-            margin-bottom: 8px; 
-            color: #222; 
-        }
-        
-        .card-content p { 
-            flex: 1; 
-            font-size: .95em; 
-            color: #555; 
-            margin-bottom: 12px; 
-        }
-        
-        .card-content time { 
-            font-size: .85em; 
-            color: #888; 
-        }
-        
-        .card-content a { 
-            align-self: flex-start; 
-            margin-top: 10px; 
-            color: #ff4747; 
-            font-weight: bold; 
-            text-decoration: none; 
-        }
-
-        /* ===== TAMAÑOS DE TARJETAS ===== */
-        .card-large { 
-            grid-column: span 2; 
-        }
-        
-        .card-large img { 
-            height: 320px; 
-        }
-        
-        .card-medium img { 
-            height: 240px; 
-        }
-        
-        .card-small img { 
-            height: 160px; 
-        }
-
-        /* ===== BOTÓN SCROLL TOP ===== */
-        .scroll-top { 
-            position: fixed; 
-            bottom: 20px; 
-            right: 20px; 
-            background: #ff4747; 
-            color: #fff; 
-            padding: 10px 12px; 
-            border-radius: 50%; 
-            font-size: 1.2em; 
-            cursor: pointer; 
-            display: none; 
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3); 
-        }
-
-        /* ===== FOOTER ===== */
-        footer { 
-            background: #1a1a1a; 
-            color: #ccc; 
-            text-align: center; 
-            padding: 25px 20px; 
-            font-size: 0.9em; 
-            margin-top: auto; 
-        }
-        
-        footer a { 
-            color: #ff4747; 
-            text-decoration: none; 
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) { 
-            .header-inner { 
-                flex-direction: column; 
-                text-align: center; 
-            } 
-            .nav { 
-                justify-content: center; 
-            } 
-            .news-grid { 
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
-            } 
-            .card-large { 
-                grid-column: span 1; 
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+            .nav {
+                justify-content: center;
+            }
+            .news-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            .card-large {
+                grid-column: span 1;
             }
         }
-        
-        @media (max-width: 480px) { 
-            .logo span { 
-                font-size: 1.4em; 
-            } 
-            .nav a { 
-                padding: 10px 15px; 
-            } 
-            .news-grid { 
-                grid-template-columns: 1fr; 
-            } 
+        @media (max-width: 480px) {
+            .logo span {
+                font-size: 1.4em;
+            }
+            .nav a {
+                padding: 10px 15px;
+            }
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
-        /* ===== ESTILOS FOOTER MEJORADO ===== */
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            background: #1a1a1a;
-            color: #ddd;
-        }
-
-        .footer-section {
-            padding: 15px;
-        }
-
-        .footer-title {
-            color: #ff4747;
-            border-left: 4px solid #ff4747;
-            padding-left: 10px;
-            margin-bottom: 20px;
-        }
-
-        .footer-links li {
-            margin: 10px 0;
-        }
-
-        .footer-links a {
-            color: #ddd;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: #ff4747;
-        }
-
-        .social-container {
+        /* Botones para compartir */
+        .social-share {
             display: flex;
-            gap: 15px;
-            margin: 20px 0;
+            gap: 10px;
         }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            background: #ff4747;
-            transform: translateY(-3px);
-        }
-
-        .newsletter input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #444;
-            background: #222;
+        .social-share a {
             color: #fff;
-        }
-
-        .subscribe-btn {
-            background: #ff4747;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            width: 100%;
+            background: #333;
+            padding: 10px;
+            border-radius: 50%;
+            text-align: center;
+            display: inline-block;
             transition: background 0.3s ease;
         }
-
-        .subscribe-btn:hover {
-            background: #ff3333;
+        .social-share a:hover {
+            background: #ff4747;
         }
+        
+        <style>
+    /* General Reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        .footer-bottom {
-            background: #111;
+    body {
+        font-family: 'Arial', sans-serif;
+        line-height: 1.6;
+        color: #333;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    /* Header */
+    header {
+        background: #333;
+        color: #fff;
+        padding: 10px 20px;
+    }
+
+    .header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo img {
+        width: 40px;
+        margin-right: 10px;
+    }
+
+    .logo span {
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+
+    .nav {
+        display: flex;
+        gap: 15px;
+    }
+
+    .nav a {
+        color: #fff;
+        font-size: 0.9em;
+        padding: 8px 12px;
+        border-radius: 3px;
+        transition: background 0.3s ease;
+    }
+
+    .nav a:hover {
+        background: #ff4747;
+    }
+
+    /* Main Section */
+    main {
+        padding: 20px;
+    }
+
+    .section-title {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+        color: #222;
+    }
+
+    .news-grid {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .card {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        overflow: hidden;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card img {
+        object-fit: cover;
+        height: 200px;
+    }
+
+    .card-content {
+        padding: 15px;
+    }
+
+    .card-content h3 {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+    }
+
+    .card-content p {
+        font-size: 0.9em;
+        color: #555;
+        margin-bottom: 10px;
+    }
+
+    .card-content time {
+        font-size: 0.8em;
+        color: #888;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    .card-content a {
+        color: #ff4747;
+        font-weight: bold;
+    }
+
+    /* Footer */
+    footer {
+        background: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+    }
+
+    footer a {
+        color: #ff4747;
+        font-size: 0.9em;
+    }
+
+    .footer-content {
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    /* Scroll Top Button */
+    .scroll-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        background: #333;
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        display: none;
+        z-index: 1000;
+    }
+
+    .scroll-top:hover {
+        background: #ff4747;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .header-inner {
+            flex-direction: column;
             text-align: center;
-            padding: 20px;
-            border-top: 1px solid #333;
         }
 
-        .footer-bottom p {
-            margin: 5px 0;
-            color: #888;
+        .nav {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
         }
 
-        .fa-heart {
-            color: #ff4747;
+        .card img {
+            height: 150px;
         }
+
+        .section-title {
+            font-size: 1.4em;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .logo span {
+            font-size: 1.2em;
+        }
+
+        .nav a {
+            padding: 8px;
+            font-size: 0.8em;
+        }
+
+        .news-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    
     </style>
 </head>
-
 <body>
-    <!-- Popunder -->
+    <!-- Popunder Adsterra -->
     <script type='text/javascript'>
         var ad_idzone = "4972896";
         var ad_width = "800";
@@ -429,10 +341,7 @@
         <section id="breaking">
             <h2 class="section-title">Última Hora <span class="live-badge">EN VIVO</span></h2>
             <div class="news-grid" id="grid-breaking"></div>
-        </section>
-
-        <!-- Sección Video -->
-        <div class="video-section">
+            <!-- Anuncio de AdSense -->
             <div class="ad-container">
                 <ins class="adsbygoogle"
                      style="display:block"
@@ -442,7 +351,7 @@
                      data-full-width-responsive="true"></ins>
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
-        </div>
+        </section>
 
         <!-- Otras Secciones -->
         <section id="politica">
@@ -455,88 +364,44 @@
             <div class="news-grid" id="grid-economia"></div>
         </section>
 
-        <section id="tecnologia">
+        <section id="tecnología">
             <h2 class="section-title">Tecnología</h2>
             <div class="news-grid" id="grid-tecnologia"></div>
+            <!-- Anuncio Interstitial Adsterra -->
+            <script type="text/javascript">
+                atOptions = {
+                    'key': 'f5e123456789abc123456789f5e1',
+                    'format': 'interstitial',
+                    'height': 250,
+                    'width': 300,
+                    'params': {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.profitabledisplaynetwork.com/f5e123456789abc123456789f5e1/invoke.js"></script>
         </section>
-
-        <div class="ad-container">
-            <script type="text/javascript" src="https://www.adsterra.com/js/banner.js" data-zone="4972897"></script>
-        </div>
 
         <section id="entretenimiento">
             <h2 class="section-title">Entretenimiento</h2>
             <div class="news-grid" id="grid-entretenimiento"></div>
         </section>
 
-        <section id="salud">
-            <h2 class="section-title">Salud</h2>
-            <div class="news-grid" id="grid-salud"></div>
-        </section>
-
         <section id="deportes">
             <h2 class="section-title">Deportes</h2>
             <div class="news-grid" id="grid-deportes"></div>
         </section>
-
-        <!-- Anuncio Interstitial -->
-        <script type="text/javascript">
-            atOptions = {
-                'key' : 'f5e123456789abc123456789f5e1',
-                'format' : 'interstitial',
-                'height' : 250,
-                'width' : 300,
-                'params' : {}
-            };
-        </script>
-        <script type="text/javascript" src="//www.profitabledisplaynetwork.com/f5e123456789abc123456789f5e1/invoke.js"></script>
     </main>
 
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-section">
-                <h3 class="footer-title">Explorar</h3>
-                <ul class="footer-links">
-                    <li><a href="#politica">Política</a></li>
-                    <li><a href="#economia">Economía</a></li>
-                    <li><a href="#tecnologia">Tecnología</a></li>
-                    <li><a href="#deportes">Deportes</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h3 class="footer-title">Legal</h3>
-                <ul class="footer-links">
-                    <li><a href="/privacidad">Política de Privacidad</a></li>
-                    <li><a href="/terminos">Términos de Servicio</a></li>
-                    <li><a href="/cookies">Política de Cookies</a></li>
-                    <li><a href="/equipo">Nuestro Equipo</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h3 class="footer-title">Conéctate</h3>
-                <div class="social-container">
-                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                </div>
-                <div class="newsletter">
-                    <input type="email" placeholder="Tu correo electrónico">
-                    <button class="subscribe-btn">Suscribirse</button>
-                </div>
-            </div>
+            <h3>Explorar más</h3>
+            <a href="#politica">Política</a>
+            <a href="#economia">Economía</a>
+            <a href="#tecnologia">Tecnología</a>
+            <a href="#deportes">Deportes</a>
         </div>
-        
-        <div class="footer-bottom">
-            <p>© 2024 Famnews. Todos los derechos reservados.</p>
-            <p>Desarrollado con <i class="fas fa-heart"></i> por tu equipo</p>
-        </div>
+        <p>© 2024 Famnews. Todos los derechos reservados.</p>
     </footer>
-
-    <!-- Scripts -->
     <script>
     const API_KEY = 'b2f9fc39-ddcc-493a-b512-171dc224aa7d';
     const CATEGORIAS = [
@@ -593,9 +458,6 @@
         // Inicializar anuncios
         (adsbygoogle = window.adsbygoogle || []).push({});
     });
-    </script>
-
-    <!-- Iconos FontAwesome (Reemplazar con tu kit real) -->
-    <script src="https://kit.fontawesome.com/tu_codigo_unico.js" crossorigin="anonymous"></script>
+</script>
 </body>
 </html>
