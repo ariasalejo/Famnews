@@ -1,0 +1,8 @@
+[build]
+  publish = "public" # Cambia "public" por el nombre de tu carpeta de salida donde están los archivos HTML
+  command = "npm run build" # Cambia esto si usas un framework (React, Vue, etc.), o elimínalo si no usas un proceso de construcción.
+
+[[redirects]]
+  from = "/ads.txt"
+  to = "/ads.txt"
+  status = 200
