@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta name="google-adsense-account" content="ca-pub-4580331939704676">
 
-    <!-- Metaetiquetas SEO -->
     <title>Famnews - Noticias Actualizadas 24/7 | Política, Tecnología, Deportes</title>
     <meta name="description" content="Portal de noticias actualizado minuto a minuto. Cobertura en política, tecnología, economía, deportes y entretenimiento. Información verificada y análisis experto.">
     <meta name="keywords" content="noticias, actualidad, política, tecnología, deportes, economía, salud, entretenimiento, México, mundo, noticias de última hora">
@@ -13,304 +12,444 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://tudominio.com">
 
-    <!-- JSON-LD Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "NewsMediaOrganization",
       "name": "Famnews",
       "url": "https://tudominio.com",
-      "logo": "https://tudominio.com/logo.png",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://tudominio.com/logo.png",
+        "width": 600,
+        "height": 60 // Ajusta estos valores según tu logo real
+      },
       "sameAs": [
-        "https://facebook.com/famnews",
+        "https://facebook.com/famnews", // Reemplaza con tus URLs reales de redes sociales
         "https://twitter.com/famnews",
         "https://instagram.com/famnews"
       ]
+      // Considera añadir contactoPoint, address, etc. para mayor riqueza del esquema
     }
     </script>
 
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tudominio.com">
     <meta property="og:title" content="Famnews - Noticias Actualizadas 24/7">
     <meta property="og:description" content="Portal líder en noticias verificadas y análisis de expertos">
     <meta property="og:image" content="https://tudominio.com/og-image.jpg">
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:image:width" content="1200"> <meta property="og:image:height" content="630"> <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@famnews">
-    <meta name="twitter:creator" content="@famnews">
+     <meta name="twitter:creator" content="@famnews">
     <meta name="twitter:title" content="Famnews - Noticias en Tiempo Real">
     <meta name="twitter:description" content="Sigue la actualidad con cobertura completa y multimedia">
     <meta name="twitter:image" content="https://tudominio.com/twitter-card.jpg">
 
-    <!-- AdSense -->
+    <link rel="icon" href="https://tudominio.com/favicon.ico" type="image/x-icon"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4580331939704676" crossorigin="anonymous"></script>
 
-    <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
 
     <style>
-        /* ===== RESPONSIVE DESIGN ===== */
-        @media (max-width: 768px) {
-            .header-inner {
-                flex-direction: column;
-                text-align: center;
-            }
-            .nav {
-                justify-content: center;
-            }
-            .news-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
-            .card-large {
-                grid-column: span 1;
-            }
-        }
-        @media (max-width: 480px) {
-            .logo span {
-                font-size: 1.4em;
-            }
-            .nav a {
-                padding: 10px 15px;
-            }
-            .news-grid {
-                grid-template-columns: 1fr;
-            }
+        /* ===== ESTILOS GENERALES Y RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        /* Botones para compartir */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4; /* Fondo gris claro para el cuerpo */
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: #222; /* Fondo oscuro */
+            color: #fff;
+            padding: 15px 20px; /* Aumenta un poco el padding */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 1200px; /* Limita el ancho del contenido del header */
+            margin: 0 auto; /* Centra el contenido */
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0; /* Asegura que no haya margen inferior por flex-wrap */
+        }
+
+        .logo img {
+            width: 45px; /* Ajusta el tamaño del logo */
+            margin-right: 12px; /* Ajusta el margen */
+        }
+
+        .logo span {
+            font-size: 1.6em; /* Ajusta el tamaño de la fuente */
+            font-weight: bold;
+            color: #fff; /* Asegura que el color sea blanco */
+        }
+
+        .nav {
+            display: flex;
+            gap: 20px; /* Aumenta el espacio entre enlaces */
+            flex-wrap: wrap; /* Permite que los enlaces envuelvan */
+            justify-content: center; /* Centra los enlaces cuando envuelven */
+            margin-top: 0; /* Asegura que no haya margen superior */
+        }
+
+        .nav a {
+            color: #fff;
+            font-size: 0.95em; /* Ajusta el tamaño de la fuente */
+            padding: 10px 15px; /* Ajusta el padding */
+            border-radius: 4px; /* Bordes ligeramente más redondeados */
+            transition: background 0.3s ease, color 0.3s ease; /* Transición suave */
+            display: flex; /* Alinea icono y texto */
+            align-items: center;
+            gap: 5px; /* Espacio entre icono y texto */
+        }
+
+        .nav a:hover,
+        .nav a.active { /* Estilo para el enlace activo */
+            background: #ff4747;
+            color: #fff; /* Asegura el color del texto */
+        }
+
+        /* ===== MAIN SECTION ===== */
+        main {
+            padding: 20px;
+            max-width: 1200px; /* Limita el ancho del contenido principal */
+            margin: 20px auto; /* Centra el contenido con margen superior/inferior */
+            background-color: #fff; /* Fondo blanco para el contenido principal */
+            border-radius: 8px; /* Bordes redondeados */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para el contenido */
+        }
+
+        section {
+             margin-bottom: 40px; /* Espacio entre secciones */
+             padding-bottom: 20px; /* Padding inferior para la sección */
+             border-bottom: 1px solid #eee; /* Separador visual entre secciones */
+        }
+
+         section:last-child {
+             border-bottom: none; /* Elimina el separador de la última sección */
+             margin-bottom: 0;
+             padding-bottom: 0;
+         }
+
+
+        .section-title {
+            font-size: 1.8em; /* Aumenta el tamaño del título */
+            margin-bottom: 20px; /* Aumenta el margen inferior */
+            color: #222;
+            border-left: 5px solid #ff4747; /* Línea decorativa */
+            padding-left: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .live-badge {
+            background-color: #ff4747;
+            color: white;
+            font-size: 0.7em;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-weight: normal;
+            animation: pulse 1.5s infinite; /* Animación de pulso */
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .news-grid {
+            display: grid;
+            gap: 25px; /* Aumenta el espacio entre tarjetas */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Ajusta minmax */
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px; /* Bordes más redondeados */
+            overflow: hidden;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición al pasar el ratón */
+        }
+
+        .card:hover {
+            transform: translateY(-5px); /* Ligero desplazamiento hacia arriba */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+        }
+
+
+        .card img {
+            object-fit: cover;
+            height: 180px; /* Ajusta la altura de la imagen */
+            width: 100%; /* Asegura que la imagen ocupe todo el ancho */
+        }
+
+        .card-content {
+            padding: 15px;
+            flex-grow: 1; /* Permite que el contenido ocupe el espacio restante */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Distribuye el espacio entre elementos */
+        }
+
+        .card-content h3 {
+            font-size: 1.1em; /* Ajusta el tamaño del título de la tarjeta */
+            margin-bottom: 10px;
+            line-height: 1.4; /* Espaciado entre líneas */
+        }
+
+        .card-content p {
+            font-size: 0.9em;
+            color: #555;
+            margin-bottom: 15px; /* Aumenta el margen inferior */
+            flex-grow: 1; /* Permite que el párrafo ocupe espacio */
+        }
+
+         .card-content time {
+            font-size: 0.75em; /* Ajusta el tamaño de la fuente */
+            color: #888;
+            margin-bottom: 10px;
+            display: block;
+         }
+
+
+        .card-content a {
+            color: #ff4747;
+            font-weight: bold;
+            align-self: flex-start; /* Alinea el enlace al inicio */
+            margin-top: 10px; /* Espacio sobre el enlace */
+            transition: color 0.3s ease; /* Transición suave */
+        }
+
+        .card-content a:hover {
+            color: #e03a3a; /* Color al pasar el ratón */
+        }
+
+        /* Estilos para contenedores de anuncios */
+        .ad-container {
+            margin: 30px auto; /* Centra y añade margen */
+            text-align: center; /* Centra contenido interno */
+            max-width: 728px; /* Ancho típico para responsive ad */
+        }
+
+        /* Botones para compartir (Estilos originales movidos aquí) */
         .social-share {
             display: flex;
             gap: 10px;
+            margin-top: 20px; /* Margen superior */
+            justify-content: center; /* Centra los botones */
         }
         .social-share a {
             color: #fff;
             background: #333;
-            padding: 10px;
+            width: 40px; /* Tamaño fijo */
+            height: 40px; /* Tamaño fijo */
             border-radius: 50%;
             text-align: center;
-            display: inline-block;
+            display: inline-flex; /* Usa flexbox para centrar el icono */
+            justify-content: center;
+            align-items: center;
             transition: background 0.3s ease;
+            font-size: 1.2em; /* Tamaño del icono */
         }
+         /* Colores específicos para iconos */
+        .social-share a.facebook { background: #3b5998; }
+        .social-share a.twitter { background: #1da1f2; }
+        .social-share a.instagram { background: #e1306c; }
+        .social-share a.whatsapp { background: #25d366; } /* Ejemplo añadido */
+        .social-share a.linkedin { background: #0077b5; } /* Ejemplo añadido */
+
+
         .social-share a:hover {
-            background: #ff4747;
+            opacity: 0.8; /* Opacidad al pasar el ratón */
         }
-        
-        <style>
-    /* General Reset */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
 
-    body {
-        font-family: 'Arial', sans-serif;
-        line-height: 1.6;
-        color: #333;
-    }
 
-    img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-    }
-
-    a {
-        text-decoration: none;
-        color: inherit;
-    }
-
-    /* Header */
-    header {
-        background: #333;
-        color: #fff;
-        padding: 10px 20px;
-    }
-
-    .header-inner {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-    }
-
-    .logo {
-        display: flex;
-        align-items: center;
-    }
-
-    .logo img {
-        width: 40px;
-        margin-right: 10px;
-    }
-
-    .logo span {
-        font-size: 1.5em;
-        font-weight: bold;
-    }
-
-    .nav {
-        display: flex;
-        gap: 15px;
-    }
-
-    .nav a {
-        color: #fff;
-        font-size: 0.9em;
-        padding: 8px 12px;
-        border-radius: 3px;
-        transition: background 0.3s ease;
-    }
-
-    .nav a:hover {
-        background: #ff4747;
-    }
-
-    /* Main Section */
-    main {
-        padding: 20px;
-    }
-
-    .section-title {
-        font-size: 1.5em;
-        margin-bottom: 15px;
-        color: #222;
-    }
-
-    .news-grid {
-        display: grid;
-        gap: 20px;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
-
-    .card {
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        overflow: hidden;
-        background: #fff;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .card img {
-        object-fit: cover;
-        height: 200px;
-    }
-
-    .card-content {
-        padding: 15px;
-    }
-
-    .card-content h3 {
-        font-size: 1.2em;
-        margin-bottom: 10px;
-    }
-
-    .card-content p {
-        font-size: 0.9em;
-        color: #555;
-        margin-bottom: 10px;
-    }
-
-    .card-content time {
-        font-size: 0.8em;
-        color: #888;
-        margin-bottom: 10px;
-        display: block;
-    }
-
-    .card-content a {
-        color: #ff4747;
-        font-weight: bold;
-    }
-
-    /* Footer */
-    footer {
-        background: #333;
-        color: #fff;
-        padding: 20px;
-        text-align: center;
-    }
-
-    footer a {
-        color: #ff4747;
-        font-size: 0.9em;
-    }
-
-    .footer-content {
-        margin-bottom: 10px;
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-        flex-wrap: wrap;
-    }
-
-    /* Scroll Top Button */
-    .scroll-top {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        width: 40px;
-        height: 40px;
-        background: #333;
-        color: #fff;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        transition: background 0.3s ease;
-        display: none;
-        z-index: 1000;
-    }
-
-    .scroll-top:hover {
-        background: #ff4747;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-        .header-inner {
-            flex-direction: column;
+        /* ===== FOOTER ===== */
+        footer {
+            background: #222; /* Fondo oscuro */
+            color: #fff;
+            padding: 30px 20px; /* Ajusta el padding */
             text-align: center;
         }
 
-        .nav {
-            flex-wrap: wrap;
+        .footer-content {
+            margin-bottom: 20px; /* Aumenta el margen inferior */
+            display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 20px; /* Aumenta el espacio */
+            flex-wrap: wrap;
         }
 
-        .card img {
-            height: 150px;
+         footer h3 {
+             font-size: 1.3em; /* Ajusta el tamaño del título */
+             margin-bottom: 15px; /* Espacio debajo del título */
+             width: 100%; /* Ocupa todo el ancho para centrar */
+         }
+
+        footer a {
+            color: #ff4747;
+            font-size: 0.95em; /* Ajusta el tamaño de la fuente */
+            transition: color 0.3s ease; /* Transición suave */
         }
 
-        .section-title {
-            font-size: 1.4em;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .logo span {
-            font-size: 1.2em;
+        footer a:hover {
+            color: #e03a3a; /* Color al pasar el ratón */
         }
 
-        .nav a {
-            padding: 8px;
-            font-size: 0.8em;
+        footer p {
+            font-size: 0.85em; /* Ajusta el tamaño del copyright */
+            color: #bbb; /* Color más suave para el copyright */
         }
 
-        .news-grid {
-            grid-template-columns: 1fr;
+        /* ===== SCROLL TOP BUTTON ===== */
+        .scroll-top {
+            position: fixed;
+            bottom: 25px; /* Ajusta la posición */
+            right: 25px; /* Ajusta la posición */
+            width: 50px; /* Aumenta el tamaño */
+            height: 50px; /* Aumenta el tamaño */
+            background: #ff4747; /* Color principal */
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.3s ease, opacity 0.3s ease; /* Transición suave */
+            display: none; /* Inicialmente oculto */
+            z-index: 1000;
+            font-size: 1.5em; /* Tamaño del icono */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra */
         }
-    }
-    
+
+        .scroll-top:hover {
+            background: #e03a3a;
+            opacity: 0.9;
+        }
+
+        /* ===== RESPONSIVE DESIGN (Ajustes adicionales y unificación) ===== */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px; /* Espacio entre logo y nav */
+            }
+
+            .nav {
+                gap: 10px; /* Reduce el espacio entre enlaces en móviles */
+            }
+
+            .logo {
+                 margin-bottom: 10px; /* Espacio debajo del logo en móviles */
+            }
+
+             .section-title {
+                 font-size: 1.5em;
+                 margin-bottom: 15px;
+             }
+
+            main {
+                padding: 15px;
+                margin: 15px auto;
+            }
+
+            .news-grid {
+                gap: 15px; /* Reduce el espacio entre tarjetas */
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajusta minmax */
+            }
+
+            .card img {
+                height: 160px; /* Ajusta la altura de la imagen */
+            }
+
+            .card-content h3 {
+                font-size: 1em;
+            }
+
+             .footer-content {
+                 gap: 10px; /* Reduce el espacio en el footer */
+             }
+
+             footer h3 {
+                 font-size: 1.2em;
+             }
+        }
+
+        @media (max-width: 480px) {
+            .logo span {
+                font-size: 1.4em;
+            }
+
+            .nav a {
+                padding: 8px 10px;
+                font-size: 0.9em;
+                gap: 3px;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr; /* Una columna en pantallas muy pequeñas */
+            }
+
+            .card img {
+                height: 140px; /* Ajusta la altura de la imagen */
+            }
+
+             .section-title {
+                 font-size: 1.3em;
+                 margin-bottom: 10px;
+             }
+
+             .social-share {
+                 gap: 8px;
+             }
+
+             .social-share a {
+                 width: 35px;
+                 height: 35px;
+                 font-size: 1em;
+             }
+
+              .scroll-top {
+                 width: 45px;
+                 height: 45px;
+                 font-size: 1.3em;
+              }
+        }
+
     </style>
 </head>
 <body>
-    <!-- Popunder Adsterra -->
     <script type='text/javascript'>
         var ad_idzone = "4972896";
         var ad_width = "800";
@@ -318,30 +457,29 @@
     </script>
     <script type='text/javascript' src='https://a.a-ads.com/script/code.js'></script>
 
-    <!-- Encabezado -->
     <header>
         <div class="header-inner">
             <div class="logo">
                 <img src="https://cdn-icons-png.flaticon.com/512/21/21601.png" alt="Logo Famnews">
                 <span>Famnews</span>
             </div>
-            <nav class="nav">
-                <a href="#breaking" class="active"><i class="fas fa-bolt"></i> Última Hora</a>
-                <a href="#politica"><i class="fas fa-landmark"></i> Política</a>
-                <a href="#economia"><i class="fas fa-chart-line"></i> Economía</a>
-                <a href="#tecnologia"><i class="fas fa-microchip"></i> Tecnología</a>
-                <a href="#deportes"><i class="fas fa-futbol"></i> Deportes</a>
+            <nav class="nav" aria-label="Navegación Principal">
+                <a href="#breaking" class="active" role="link" aria-current="page"><i class="fas fa-bolt"></i> Última Hora</a>
+                <a href="#politica" role="link"><i class="fas fa-landmark"></i> Política</a>
+                <a href="#economia" role="link"><i class="fas fa-chart-line"></i> Economía</a>
+                <a href="#tecnologia" role="link"><i class="fas fa-microchip"></i> Tecnología</a>
+                 <a href="#salud" role="link"><i class="fas fa-heartbeat"></i> Salud</a>
+                <a href="#deportes" role="link"><i class="fas fa-futbol"></i> Deportes</a>
+                 <a href="#entretenimiento" role="link"><i class="fas fa-film"></i> Entretenimiento</a>
             </nav>
         </div>
     </header>
 
-    <!-- Contenido Principal -->
     <main>
-        <!-- Sección Breaking News -->
         <section id="breaking">
             <h2 class="section-title">Última Hora <span class="live-badge">EN VIVO</span></h2>
-            <div class="news-grid" id="grid-breaking"></div>
-            <!-- Anuncio de AdSense -->
+            <div class="news-grid" id="grid-breaking" role="region" aria-label="Noticias de Última Hora">
+                </div>
             <div class="ad-container">
                 <ins class="adsbygoogle"
                      style="display:block"
@@ -349,115 +487,61 @@
                      data-ad-slot="7854982376"
                      data-ad-format="auto"
                      data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            </div>
+                 </div>
         </section>
 
-        <!-- Otras Secciones -->
         <section id="politica">
             <h2 class="section-title">Política</h2>
-            <div class="news-grid" id="grid-politica"></div>
+            <div class="news-grid" id="grid-politica" role="region" aria-label="Noticias de Política"></div>
         </section>
 
         <section id="economia">
             <h2 class="section-title">Economía</h2>
-            <div class="news-grid" id="grid-economia"></div>
+            <div class="news-grid" id="grid-economia" role="region" aria-label="Noticias de Economía"></div>
         </section>
 
-        <section id="tecnología">
+        <section id="tecnologia">
             <h2 class="section-title">Tecnología</h2>
-            <div class="news-grid" id="grid-tecnologia"></div>
-            <!-- Anuncio Interstitial Adsterra -->
+            <div class="news-grid" id="grid-tecnologia" role="region" aria-label="Noticias de Tecnología"></div>
             <script type="text/javascript">
                 atOptions = {
-                    'key': 'f5e123456789abc123456789f5e1',
+                    'key': 'f5e123456789abc123456789f5e1', // Reemplaza con tu clave real de Adsterra
                     'format': 'interstitial',
-                    'height': 250,
-                    'width': 300,
+                    'height': 250, // Estos parámetros pueden no ser necesarios para interstitial
+                    'width': 300, // Estos parámetros pueden no ser necesarios para interstitial
                     'params': {}
                 };
             </script>
-            <script type="text/javascript" src="//www.profitabledisplaynetwork.com/f5e123456789abc123456789f5e1/invoke.js"></script>
+            <script type="text/javascript" src="https://www.profitabledisplaynetwork.com/f5e123456789abc123456789f5e1/invoke.js"></script>
+        </section>
+
+        <section id="salud">
+             <h2 class="section-title">Salud</h2>
+             <div class="news-grid" id="grid-salud" role="region" aria-label="Noticias de Salud"></div>
         </section>
 
         <section id="entretenimiento">
             <h2 class="section-title">Entretenimiento</h2>
-            <div class="news-grid" id="grid-entretenimiento"></div>
+            <div class="news-grid" id="grid-entretenimiento" role="region" aria-label="Noticias de Entretenimiento"></div>
         </section>
 
         <section id="deportes">
             <h2 class="section-title">Deportes</h2>
-            <div class="news-grid" id="grid-deportes"></div>
+            <div class="news-grid" id="grid-deportes" role="region" aria-label="Noticias de Deportes"></div>
         </section>
+
+        <section id="compartir">
+             <h2 class="section-title">Comparte Famnews</h2>
+             <div class="social-share">
+                 <a href="#" class="facebook" aria-label="Compartir en Facebook"><i class="fab fa-facebook-f"></i></a>
+                 <a href="#" class="twitter" aria-label="Compartir en Twitter"><i class="fab fa-twitter"></i></a>
+                 <a href="#" class="whatsapp" aria-label="Compartir en WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                 <a href="#" class="linkedin" aria-label="Compartir en LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                 </div>
+         </section>
+
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <h3>Explorar más</h3>
-            <a href="#politica">Política</a>
-            <a href="#economia">Economía</a>
-            <a href="#tecnologia">Tecnología</a>
-            <a href="#deportes">Deportes</a>
-        </div>
-        <p>© 2024 Famnews. Todos los derechos reservados.</p>
-    </footer>
-    <script>
-    const API_KEY = 'b2f9fc39-ddcc-493a-b512-171dc224aa7d';
-    const CATEGORIAS = [
-        {id: 'breaking', query: 'mexico'},
-        {id: 'politica', query: 'politica'},
-        {id: 'economia', query: 'economia'},
-        {id: 'tecnologia', query: 'tecnologia'},
-        {id: 'entretenimiento', query: 'entretenimiento'},
-        {id: 'salud', query: 'salud'},
-        {id: 'deportes', query: 'deportes'}
-    ];
-
-    async function cargarNoticias(categoria, query) {
-        try {
-            const response = await fetch(`https://newsapi.ai/api/v1/article/getArticles?apiKey=${API_KEY}&lang=spa&resultType=articles&count=6${query ? `&keyword=${query}` : ''}`);
-            const data = await response.json();
-            const grid = document.getElementById(`grid-${categoria}`);
-            
-            grid.innerHTML = data.articles.results.map((art, index) => `
-                <div class="card ${index === 0 ? 'card-large' : index < 3 ? 'card-medium' : 'card-small'}">
-                    <img src="${art.image || 'https://via.placeholder.com/400x200'}" alt="${art.title}">
-                    <div class="card-content">
-                        <h3>${art.title}</h3>
-                        <p>${art.snippet}</p>
-                        <time>${new Date(art.date).toLocaleDateString('es-MX')}</time>
-                        <a href="${art.url}" target="_blank">Leer completo →</a>
-                    </div>
-                </div>
-            `).join('');
-        } catch (error) {
-            console.error(`Error cargando ${categoria}:`, error);
-        }
-    }
-
-    // Inicialización
-    window.addEventListener('load', () => {
-        // Cargar noticias
-        CATEGORIAS.forEach(({id, query}) => cargarNoticias(id, query));
-        
-        // Botón Scroll Top
-        const scrollTopBtn = document.createElement('div');
-        scrollTopBtn.className = 'scroll-top';
-        scrollTopBtn.innerHTML = '↑';
-        document.body.appendChild(scrollTopBtn);
-
-        window.addEventListener('scroll', () => {
-            scrollTopBtn.style.display = window.scrollY > 500 ? 'block' : 'none';
-        });
-
-        scrollTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // Inicializar anuncios
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    });
-</script>
-</body>
-</html>
+            <
