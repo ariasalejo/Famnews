@@ -1,8 +1,14 @@
 [build]
-  publish = "docs" # Cambia esto si los archivos HTML están en otra carpeta.
-  command = "" # Deja vacío si no necesitas construir nada.
+  # Especifica la carpeta donde están los archivos para desplegar
+  publish = "docs" # Cambia "docs" si tu carpeta de publicación es otra.
+  command = "" # Deja vacío si no necesitas ejecutar un proceso de construcción.
 
 [[redirects]]
-  from = "/ads.txt"
+  from = "/ads.txt" # Redirección para el archivo ads.txt
   to = "/ads.txt"
+  status = 200
+
+[[redirects]]
+  from = "/*" # Asegura que todas las rutas se redirijan al index.html
+  to = "/index.html"
   status = 200
