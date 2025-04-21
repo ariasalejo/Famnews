@@ -1,14 +1,15 @@
 [build]
-  # Especifica la carpeta donde están los archivos para desplegar
-  publish = "docs" # Cambia "docs" si tu carpeta de publicación es otra.
-  command = "" # Deja vacío si no necesitas ejecutar un proceso de construcción.
+  # Ya que tu sitio es estático, no necesitas comando de build
+  command = ""
+  # Publica todo lo que esté dentro de la carpeta 'docs'
+  publish = "docs"
 
 [[redirects]]
-  from = "/ads.txt" # Redirección para el archivo ads.txt
-  to = "/ads.txt"
+  from = "/ads.txt"
+  to   = "/ads.txt"
   status = 200
 
 [[redirects]]
-  from = "/*" # Asegura que todas las rutas se redirijan al index.html
-  to = "/index.html"
+  from   = "/*"
+  to     = "/index.html"
   status = 200
