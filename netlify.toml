@@ -1,6 +1,6 @@
 [build]
-  publish = "docs" # Cambia esto si "docs" no es la carpeta que contiene los archivos del sitio.
-  command = "" # Déjalo vacío si no necesitas un proceso de construcción.
+  publish = "docs" # Cambia esto si los archivos HTML están en otra carpeta.
+  command = "" # Deja vacío si no necesitas construir nada.
 
 [[redirects]]
   from = "/ads.txt"
